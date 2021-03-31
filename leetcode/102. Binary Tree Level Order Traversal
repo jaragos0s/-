@@ -1,0 +1,33 @@
+# C에서 큐를 구현하는 함수를 만들어주었던 것과 달리 파이썬에는 라이브러리를 불러오기만 하면 된다. (최고)
+# Definition for a binary tree node.
+from collections import deque
+
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+class Solution:
+    def levelOrder(self, root: TreeNode) -> List[List[int]]:       
+        if root == None:
+            return []
+        
+        answer = []
+        queue = deque()
+        queue.append(root)   
+        
+        while queue:
+            level = [] # level마다 []를 해줌
+            for _ in range(len(queue)):
+                node= queue.popleft() # 주의! pop(0) 이 아닌 popleft()를 해야 시간복잡도를 줄일 수 있다.
+                level.append(node.val)
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
+                
+            answer.append(level)
+                
+        return answer
+            
+            
