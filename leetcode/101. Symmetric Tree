@@ -1,0 +1,26 @@
+# Definition for a binary tree node.
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+class Solution:
+    def isSymmetric(self, root: TreeNode) -> bool:
+        if root == None : 
+            return True
+        
+        return self.child_symmetric(root.left, root.right)
+    
+    def child_symmetric(self, root_left: TreeNode, root_right: TreeNode) -> bool:
+        if root_left == None and root_right == None:
+            return True
+        elif root_left == None or root_right == None: # 둘 중 하나만 None -> NOT symmetric
+            return False
+        else : 
+        # 세가지 요건을 모두 만족시켜야 symmetric tree
+        # 1. root_left.val == root_right.val
+        # 2. child에서 root_left.left == root_right.right
+        # 3. child에서 root_left.right == root_rigth.left
+            return root_left.val == root_right.val and self.child_symmetric(root_left.left, root_right.right) and self.child_symmetric(root_left.right, root_right.left)
+       
+        
