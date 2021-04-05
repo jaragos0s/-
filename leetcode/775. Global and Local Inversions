@@ -1,0 +1,42 @@
+# We have some permutation A of [0, 1, ..., N - 1], where N is the length of A.
+
+# The number of (global) inversions is the number of i < j with 0 <= i < j < N and A[i] > A[j].
+
+# The number of local inversions is the number of i with 0 <= i < N and A[i] > A[i+1].
+
+# Return true if and only if the number of global inversions is equal to the number of local inversions.
+
+class Solution:
+    def isIdealPermutation1(self, A: List[int]) -> bool:
+      
+        # 첫번째 방법 
+        num_global = 0
+        num_local = 0
+        # count
+        for i in range(len(A) - 1):
+            a_i = A[i]
+            if a_i > A[i+1]: # The number of local inversions is the number of i with 0 <= i < N and A[i] > A[i+1].
+                num_local += 1
+            for j in range(i, len(A)): # The number of (global) inversions is the number of i < j with 0 <= i < j < N and A[i] > A[j].
+                if a_i > A[j]:
+                    num_global += 1
+        
+        
+        return num_global == num_local
+     
+        # 위와 같이 했을 때 Time Limited Exceeded로 실패했다. O(n^2)
+      
+
+    def isIdealPermutation2(self, A: List[int]) -> bool:
+        # 두번째 방법 : local inversion이 아닌 global inversion이 하나라도 존재하면 false라는 것을 이용
+
+        max_value = 0 
+
+        for i in range(len(A) - 2):
+            max_value = max(max_value, A[i])
+            if (max_value > A[i+2]):
+                return False
+        
+        return True
+        
+            
