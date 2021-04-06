@@ -1,0 +1,13 @@
+class Solution:
+    def minOperations(self, n: int) -> int:
+        arr = [None] * n
+        num_operation = 0
+        # 배열에 원소 채워넣기
+        for i in range(n):
+            arr[i] = (2 * i) + 1
+        # number of minimum operation 계산
+        # => 각 양 끝부터 +1, -1 계산해서 n을 만드는 것이 minimum
+        for i in range(n // 2):
+                num_operation += n - arr[i]
+                
+        return num_operation
