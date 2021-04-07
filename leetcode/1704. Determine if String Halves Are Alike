@@ -1,0 +1,24 @@
+# You are given a string s of even length. Split this string into two halves of equal lengths, and let a be the first half and b be the second half.
+
+# Two strings are alike if they have the same number of vowels ('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'). Notice that s contains uppercase and lowercase letters.
+
+# Return true if a and b are alike. Otherwise, return false.
+
+ 
+
+
+class Solution:
+    def halvesAreAlike(self, s: str) -> bool:
+        len_s = len(s) // 2
+        a = s[:len_s]
+        b = s[len_s:]
+        
+        vowels_a = 0
+        vowels_b = 0
+        for i in range(len_s):
+            if a[i] == 'a' or a[i] == 'e' or a[i] == 'i' or a[i] == 'o' or a[i] == 'u' or a[i] == 'A' or a[i] == 'E' or a[i] == 'I' or a[i] == 'O' or a[i] == 'U':
+                vowels_a += 1
+            if b[i] == 'a' or b[i] == 'e' or b[i] == 'i' or b[i] == 'o' or b[i] == 'u' or b[i] == 'A' or b[i] == 'E' or b[i] == 'I' or b[i] == 'O' or b[i] == 'U':
+                vowels_b += 1
+            print(vowels_a, vowels_b)
+        return (vowels_a == vowels_b)
