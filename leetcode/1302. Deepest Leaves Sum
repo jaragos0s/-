@@ -1,0 +1,29 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:    
+    # sum, depth, max_depth 등 넘겨야 할 parameter가 너무 많음. 
+    # -> __init__에 self.sum, self.max_depth로 해결
+    def __init__(self):
+        self.sum = 0
+        self.max_depth = -1
+        
+    def deepestLeavesSum(self, root: TreeNode) -> int:
+        self.maxDepth(root, 0)
+        return self.sum
+        
+    def maxDepth(self, root: TreeNode, depth):
+        if not root:
+            return
+        if depth > self.max_depth:
+            self.sum = root.val
+            self.max_depth = depth
+        elif depth == self.max_depth:
+            self.sum += root.val
+            
+        self.maxDepth(root.left, depth + 1)
+        self.maxDepth(root.right, depth + 1)   
+        
