@@ -1,0 +1,24 @@
+class Solution:
+    def constructArray(self, n: int, k: int) -> List[int]:
+        array = [0] * n
+        even = 1
+        odd = k+1
+        
+        # n = 4, k = 3일 때
+        # [1, k+1, 2, k]
+        # 짝수 인덱스 배열에는 1부터 1씩 증가하여 저장,
+        # 홀수 인덱스 배열에는 k+1부터 1씩 감소하여 저장
+        # k+1부터는 인덱스+1만큼 차례대로 저장
+        
+        for i in range(k+1):
+            if i % 2: # odd
+                array[i] = odd
+                odd -= 1
+            else:     # even
+                array[i] = even
+                even += 1
+                
+        for i in range(k+1, n):
+            array[i] = i + 1
+        
+        return array
