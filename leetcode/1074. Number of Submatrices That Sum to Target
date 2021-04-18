@@ -1,0 +1,29 @@
+# Using D.P.
+# 아직 dynamic programming은 익숙하지 않다. 다시 공부하기 !
+class Solution:
+    def numSubmatrixSumTarget(self, matrix: List[List[int]], target: int) -> int:
+        
+        row = len(matrix)
+        col = len(matrix[0])
+        answer = 0
+        
+        # row : prefix sum
+        for i in range(row):
+            for j in range(col-1):
+                matrix[i][j+1] += matrix[i][j]
+        
+        answer = 0
+        # column : the accumulated sum of row
+        for j in range(col):
+            for k in range(j, col):
+                dictionary = {0:1}
+                sum_column =0
+                for i in range(row):
+                    if j > 0:
+                        sum_column += matrix[i][k] - matrix[i][j-1]
+                    else:
+                        sum_column += matrix[i][k]
+                    answer += dictionary.get(sum_column-target, 0)
+                    dictionary[sum_column] = dictionary.get(sum_column, 0) + 1
+                    
+        return answer
