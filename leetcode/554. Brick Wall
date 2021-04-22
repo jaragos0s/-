@@ -1,0 +1,15 @@
+class Solution:
+    def leastBricks(self, wall: List[List[int]]) -> int:
+        bricks = {}
+        height = len(wall)
+        for i in range(len(wall)):
+            Sum = 0
+            for j in range(len(wall[i])-1):
+                Sum += wall[i][j]
+                if Sum in bricks:
+                    bricks[Sum] += 1
+                else: bricks[Sum] = 1
+        if not bricks: # if width == 1, the answer is the value of height
+            return height
+        most = max(bricks.values()) # We want to get # of least -> least = height - most
+        return height - most
