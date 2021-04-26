@@ -1,0 +1,13 @@
+# python의 heapq모듈 사용 : binary tree 기반의 min heap
+class Solution:
+    def furthestBuilding(self, heights: List[int], bricks: int, ladders: int) -> int:
+        heap = []
+        for i in range(len(heights) - 1):
+            distance = heights[i + 1] - heights[i]
+            if distance > 0:
+                heapq.heappush(heap, distance)
+            if len(heap) > ladders:
+                bricks -= heapq.heappop(heap)
+            if bricks < 0:
+                return i
+        return len(heights) - 1
