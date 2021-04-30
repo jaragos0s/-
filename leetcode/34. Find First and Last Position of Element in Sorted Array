@@ -1,0 +1,16 @@
+# Given an array of integers nums sorted in ascending order, 
+# find the starting and ending position of a given target value.
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        answer = [-1, -1]
+        for i in range(len(nums)):
+            if nums[i] == target:
+                if answer[0] == -1:
+                    answer[0] = i
+                else: 
+                    answer[1] = i
+        
+        if answer[0] != -1 and answer[1] == -1:
+            answer[1] = answer[0]
+            
+        return answer
