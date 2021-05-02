@@ -1,0 +1,14 @@
+class Solution:
+    def scheduleCourse(self, courses: List[List[int]]) -> int:
+        currentTotalTime = 0
+        schedule = []
+        # Sorting the courses is needed.
+        courses.sort(key = lambda x:x[1])
+        
+        for course in courses:
+            schedule.append(course[0]) # add the duration in the schedule array
+            if sum(schedule) > course[1]: # if the last day in schedule > last day in this course
+                schedule.remove(max(schedule)) # remove the course which has the largest duration
+        
+        answer = len(schedule)
+        return answer
