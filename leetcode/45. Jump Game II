@@ -1,0 +1,13 @@
+class Solution:
+    def jump(self, nums: List[int]) -> int:
+        # Using BFS
+        jump = 0
+        start = end = 0
+        maximum = 0
+        while end < len(nums) - 1:
+            jump += 1
+            for i in range(start, end + 1):
+                maximum = max(maximum, i + nums[i])
+            start = end + 1
+            end = maximum
+        return jump
