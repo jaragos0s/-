@@ -1,0 +1,19 @@
+# kakao internship coding test 01
+def solution(s):
+    integers = ['0','1','2','3','4','5','6','7','8','9']
+    dictionary = {'zero':0, 'one':1, 'two':2, 'three':3, 'four':4,
+                  'five':5, 'six':6, 'seven':7, 'eight':8, 'nine':9}
+    answer = 0
+    words = []
+    for i in range(len(s)):
+      if  s[i] in integers: # if s[i] is integer
+          answer = answer * 10 + int(s[i]) # s[i]의 type은 char이기 때문에 자료형 변환을 해주어야 함.
+      else: # if s[i] is char
+          string = ''
+          words.append(s[i])
+          string = ''.join(words)
+          if string in dictionary:
+            answer = answer * 10 + dictionary[string]
+            words = []
+      #print(answer)
+    return answer
