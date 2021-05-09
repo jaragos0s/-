@@ -1,0 +1,18 @@
+class Solution:
+    def isPossible(self, target: List[int]) -> bool:
+        heap = [-i for i in target]
+        total = sum(target)
+        heapify(heap)
+        
+        while heap[0] != -1:
+            i = -heappop(heap)
+            total -= i
+            
+            if i <= total or total < 1: 
+                return False
+                
+            i %= total
+            total += i
+            heappush(heap, -i)
+            
+        return True
