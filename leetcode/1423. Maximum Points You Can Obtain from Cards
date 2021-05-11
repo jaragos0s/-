@@ -1,0 +1,13 @@
+# If I choose n cards of the left, then k - n cards will be rightmost
+class Solution:
+    def maxScore(self, cardPoints: List[int], k: int) -> int:
+        answer = 0
+        left = [0]
+        right = [0]
+        for i in range(k):
+            left.append(left[-1] + cardPoints[i])
+            right.append(right[-1] + cardPoints[-(1+i)])
+        for i in range(k+1):
+            answer = max(answer, left[i] + right[k-i])
+        return answer
+        
