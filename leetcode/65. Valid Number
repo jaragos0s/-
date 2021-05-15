@@ -1,0 +1,20 @@
+# 다음번에는 re를 써서 풀어보기!
+class Solution:
+    def isNumber(self, s: str) -> bool:
+        num, exp, dot, sign = False, False, False, False
+        for i in s:
+            if i >= '0' and i <= '9':
+                num = True
+            elif i == '+' or i == '-':
+                if sign or num or dot: return False
+                else: sign = True
+            elif i == '.':
+                if dot or exp: return False
+                else: dot = True
+            elif i == 'e' or i == 'E':
+                if exp or not num: 
+                    return False
+                else: exp, dot, sign, num = True, False, False, False
+            else: 
+                return False
+        return num
