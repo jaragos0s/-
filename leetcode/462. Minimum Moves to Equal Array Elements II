@@ -1,0 +1,9 @@
+import numpy as np
+class Solution:
+    def minMoves2(self, nums: List[int]) -> int:
+        nums.sort()
+        answer = 0
+        for i in range(len(nums)):
+            answer += abs(nums[i] - nums[len(nums) // 2])
+        
+        return answer
