@@ -1,0 +1,20 @@
+# Using Backtracking
+class Solution:
+    def solveNQueens(self, n: int) -> List[List[str]]:
+        answer = []
+        
+        def DFS(Queens, queen_diff, queen_sum):
+            j = len(Queens)
+        
+            if j == n:
+                answer.append(Queens)
+                return
+            
+            for i in range(n):
+                # promising function
+                if i not in Queens and j - i not in queen_diff and j + i not in queen_sum:
+                    DFS(Queens + [i], queen_diff + [j - i], queen_sum + [j + i])
+            
+        DFS([], [], [])
+        
+        return [["." * i + "Q" + "." * (n - 1 - i) for i in result] for result in answer]
