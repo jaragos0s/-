@@ -1,0 +1,4 @@
+# we can solve the problem by returning the maximum number of each digit.
+class Solution:
+    def minPartitions(self, n: str) -> int:
+        return max(n)
