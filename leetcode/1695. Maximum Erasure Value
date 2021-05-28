@@ -1,0 +1,11 @@
+class Solution:
+    def maximumUniqueSubarray(self, nums: List[int]) -> int:
+        maximum = 0
+        answer = []
+        for num in nums:
+            if num in answer:
+                maximum = max(maximum, sum(answer))
+                del answer[: answer.index(num) + 1]
+            answer.append(num)
+        
+        return max(maximum, sum(answer))
