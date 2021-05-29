@@ -1,0 +1,21 @@
+
+class Solution:
+    def __init__(self):
+        self.answer = 0
+        self.sets = {}
+        self.longest = 0
+    def totalNQueens(self, n: int) -> int:
+        def DFS(Queens, queen_diff, queen_sum):            
+            j = len(Queens)
+            
+            if j == n:
+                self.answer += 1
+                return
+            
+            for i in range(n):
+                if i not in Queens and j - i not in queen_diff and j + i not in queen_sum:
+                    DFS(Queens + [i], queen_diff + [j - i], queen_sum + [j + i])
+            
+        DFS([], [], [])
+        
+        return self.answer
