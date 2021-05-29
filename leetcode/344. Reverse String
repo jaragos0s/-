@@ -1,0 +1,16 @@
+class Solution:
+    def reverseString(self, s: List[str], low = 0, high = None) -> None:
+        """
+        Do not return anything, modify s in-place instead.
+        """
+        if high is None:
+            high = len(s) - 1
+        
+        if low >= high:
+            return
+        
+        s[low], s[high] = s[high], s[low]
+        self.reverseString(s, low + 1, high - 1)
+
+# Without recursion, just write
+# s = s[::-1]
