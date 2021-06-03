@@ -1,0 +1,27 @@
+class Solution:
+    def maxArea(self, h: int, w: int, horizontalCuts: List[int], verticalCuts: List[int]) -> int:
+        horizontalCuts.append(0)
+        horizontalCuts.append(h)
+        verticalCuts.append(0)
+        verticalCuts.append(w)
+        
+        horizontalCuts.sort()
+        verticalCuts.sort()
+        
+        horizontalDiff = 0
+        verticalDiff = 0
+
+        for i in range(len(horizontalCuts) - 1):
+            diff = abs(horizontalCuts[i] - horizontalCuts[i + 1])
+            horizontalDiff = max(diff, horizontalDiff)
+        
+        for i in range(len(verticalCuts) - 1):
+            diff = abs(verticalCuts[i] - verticalCuts[i + 1])
+            verticalDiff = max(diff, verticalDiff)
+        
+        # int overflow. Since the answer can be a huge number, return this modulo 10^9 + 7.
+        # return horizontalDiff * verticalDiff
+        
+        return horizontalDiff * verticalDiff % (10**9 + 7)
+        
+        
