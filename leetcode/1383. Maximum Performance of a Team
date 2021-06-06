@@ -1,0 +1,18 @@
+# Use Priority Queue! 
+class Solution:
+    def maxPerformance(self, n: int, speed: List[int], efficiency: List[int], k: int) -> int:
+        answer = 0
+        heap = []
+        hsum = 0
+        for e, s in sorted(list(zip(efficiency, speed)), reverse = True):
+            if len(heap) < k:
+                heapq.heappush(heap, s)
+            else:
+                pop = heapq.heappop(heap)
+                hsum -= pop
+                heapq.heappush(heap, s)     
+            hsum += s
+            answer = max(e * hsum, answer)
+        return answer % (10 ** 9 + 7)
+               
+                
