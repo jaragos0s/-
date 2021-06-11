@@ -1,0 +1,11 @@
+# Kadane's algorithm
+
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        n = len(nums)
+        answer = -10**5
+        local_answer = 0
+        for i in range(n):
+            local_answer = max(nums[i], nums[i] + local_answer)
+            answer = max(local_answer, answer)
+        return answer
