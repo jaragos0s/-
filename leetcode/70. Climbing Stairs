@@ -1,0 +1,9 @@
+# Use Simple DP
+# Runtime: 28 ms, faster than 80.61% of Python3 online submissions for Climbing Stairs.
+# Memory Usage: 14.3 MB, less than 42.37% of Python3 online submissions for Climbing Stairs.
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        answer = [0, 1, 2] + [0] * (n - 2)
+        for i in range(3, n + 1):
+            answer[i] = answer[i - 1] + answer[i - 2]
+        return answer[n]
