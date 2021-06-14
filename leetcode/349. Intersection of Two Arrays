@@ -1,0 +1,10 @@
+# Brute Force
+class Solution:
+    def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        answer = []
+        # Using set to avoid duplicate
+        for num in set(nums1):
+            if num in nums2:
+                answer.append(num)
+                
+        return answer
