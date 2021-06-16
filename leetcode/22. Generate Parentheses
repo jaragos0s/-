@@ -1,0 +1,18 @@
+# Use DFS
+class Solution:
+    def generateParenthesis(self, n: int) -> List[str]:
+        answer = []
+        def dfs(left, right, current):
+            # the length of elements of answer will be the same as 2*n
+            if len(current) == 2 * n:
+                answer.append(current)
+                return
+            
+            if left < n:
+                dfs(left + 1, right, current + "(")
+            if left > right:
+                dfs(left, right + 1, current + ")")
+            
+        dfs(0, 0, "")
+        
+        return answer
