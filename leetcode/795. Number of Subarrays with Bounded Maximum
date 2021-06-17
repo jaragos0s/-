@@ -1,0 +1,19 @@
+# Use DP
+class Solution:
+    def numSubarrayBoundedMax(self, nums: List[int], left: int, right: int) -> int:
+        dp = 0 
+        answer, prev = 0, -1
+        
+        for i in range(len(nums)):
+            cur = nums[i] 
+            # dp : the number of valid subarrays that ends with nums[i]
+            if cur > right: # invalid
+                dp = 0
+                prev = i
+            elif left <= cur <= right: # valid
+                dp = i - prev
+                
+            answer += dp
+            
+        return answer
+            
