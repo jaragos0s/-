@@ -1,0 +1,17 @@
+class Solution:
+    def candy(self, ratings: List[int]) -> int:
+        n = len(ratings)
+        
+        if n == 1:
+            return n
+        
+        candies = [1] * n # 캔디를 나누어주는 개수
+        for i in range(1, n):
+            if ratings[i] > ratings[i - 1]:
+                candies[i] = candies[i - 1] + 1
+        
+        for i in range(n -1, 0, -1): # 역순으로 돌면서 캔디 개수 갱신
+            if ratings[i] < ratings[i - 1]:
+                candies[i-1] = max(candies[i] + 1, candies[i - 1])
+            
+        return sum(candies)
