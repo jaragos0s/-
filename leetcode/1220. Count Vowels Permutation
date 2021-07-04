@@ -15,4 +15,4 @@ class Solution:
             # i, o -> u
             dp[i][4] = dp[i-1][2] + dp[i-1][3]
         
-        return sum(dp[n]) % (10^9 + 7)
+        return sum(dp[n]) % (10 ** 9 + 7)
