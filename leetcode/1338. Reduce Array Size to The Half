@@ -1,0 +1,19 @@
+# Use most_common function in Counter
+
+from collections import Counter
+
+class Solution:
+    def minSetSize(self, arr: List[int]) -> int:
+        n = len(arr) // 2
+        array = Counter(arr).most_common()  # make arr to dictionary of its elements' frequency
+        answer = 0
+        length = 0  # how long I take
+        
+        for num, freq in array:
+            answer += 1
+            length += freq
+            
+            if length >= n:
+                return answer
+            
+        return answer
