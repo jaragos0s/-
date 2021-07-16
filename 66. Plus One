@@ -1,8 +1,0 @@
-class Solution:
-    def plusOne(self, digits: List[int]) -> List[int]:
-        digit = 1
-        answer = 0
-        for num in range(len(digits)-1, -1, -1):
-            answer = answer + digits[num] * digit
-            digit *= 10
-        return [int(i) for i in str(answer + 1)]
