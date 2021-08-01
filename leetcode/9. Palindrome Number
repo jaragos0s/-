@@ -1,0 +1,9 @@
+# An integer is a palindrome when it reads the same backward as forward. 
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        # if negative number, it is false
+        if x < 0:
+            return False
+        rv = [i for i in str(x)]
+        rvd = rv.reverse()
+        return x == int(''.join(rv))    
