@@ -1,0 +1,10 @@
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        single = []
+        for num in nums:
+            if num not in single:
+                single.append(num)
+            else:
+                single.remove(num)
+                
+        return single[0]
