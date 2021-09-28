@@ -1,0 +1,17 @@
+class Solution:
+    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+        """
+        Do not return anything, modify nums1 in-place instead.
+        """
+        # 뒤에서부터 원소를 비교해 큰 것 부터 nums1의 뒤에 넣는다.
+        
+        while m > 0 and n > 0:
+            if nums1[m-1] > nums2[n-1]:
+                nums1[m+n-1] = nums1[m-1]
+                m -= 1
+            else:
+                nums1[m+n-1] = nums2[n-1]
+                n -= 1
+        # num2에서 남은 원소들은 그 앞에 그대로 붙여준다.
+        if m == 0:
+            nums1[:n] = nums2[:n]
