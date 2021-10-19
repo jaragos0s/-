@@ -1,0 +1,19 @@
+class Solution:
+    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        answer = []
+        len2 = len(nums2)
+        for num in nums1:
+            index = nums2.index(num)
+            while index + 1 < len2:
+                next_element = nums2[index + 1]
+                if num < next_element:
+                    answer.append(next_element)
+                    break
+                else: # since all integers are unique, this is not the next greater element
+                    index += 1
+            if index == len2 - 1:
+                answer.append(-1)
+                
+        return answer
+                
+            
