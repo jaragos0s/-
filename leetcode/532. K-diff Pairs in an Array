@@ -1,0 +1,10 @@
+class Solution:
+    def findPairs(self, nums: List[int], k: int) -> int:
+        answer = 0
+        cnt = Counter(nums)
+        
+        for i in cnt:
+            if (k > 0 and i-k in cnt) or (k == 0 and cnt[i] > 1):
+                answer += 1
+                
+        return answer
