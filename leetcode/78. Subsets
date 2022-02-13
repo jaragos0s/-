@@ -1,6 +1,6 @@
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        answer = [[]]
+        answer = [[]] # 2d array 
         for num in nums:
             for idx in range(len(answer)):
                 answer.append(answer[idx] + [num])
